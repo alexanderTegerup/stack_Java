@@ -27,7 +27,7 @@ public class Node {
        return nodeValue;
    }
    
-   public void setReference(Node nodeRef){
-       prevNode = nodeRef;
+   public Node getReference(){
+       return prevNode;
    }
 }
