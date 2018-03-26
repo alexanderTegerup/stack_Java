@@ -16,10 +16,15 @@ public class Stack_java {
     /**
      * @param args the command line arguments
      */
+    
+   
+    
     public static void main(String[] args) {
         
         boolean runProgram = true;
         Node top = null;
+        
+        MethodsForMain method = new MethodsForMain();
         
         while(runProgram){
             System.out.print("What do you want to do?\n 1: Push to stack\n 2: Pop from stack\n 3: Print all elements on the stack\n 4: Exit\n");
@@ -28,33 +33,15 @@ public class Stack_java {
             
             switch (n){
                 
-                case 1 : Node addNode;
-                
-                    addNode = new Node(top);
-                    System.out.println("Enter value: ");
-                    char userChar = input.next().charAt(0);
-                    addNode.setValue(userChar);
-                    top = addNode;
+                case 1 : top = method.push(top);
                     break;
                     
-                case 2 : if(top != null){
-                    top = top.getReference();
-                }else{
-                    System.out.println("The stack is empty.");
-                }
+                case 2 : top = method.pop(top);
                     break;
                     
-                case 3 : if(top == null){
-                    System.out.println("The stack is empty.");
-                }else{
-                    while(top.getReference()!=null){
-                    System.out.printf("Top value: %c\n", top.getValue());
-                    top = top.getReference();
-                    }
-                    System.out.printf("Top value: %c\n", top.getValue());
-                    top = top.getReference();
-                }
+                case 3 : method.printAll(top);
                     break;
+                    
                 case 4 : runProgram = false;
                     break;
                        
