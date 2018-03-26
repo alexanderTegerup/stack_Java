@@ -13,6 +13,12 @@ package stack_java;
 public class Node {
     
    private char nodeValue; 
+   private Node prevNode;
+   
+   public Node(Node nodeRef){ // Constructor
+       prevNode = nodeRef;
+   }
+   
    
    public void setValue(char value){
        nodeValue = value;
@@ -20,5 +26,8 @@ public class Node {
    public char getValue(){
        return nodeValue;
    }
-    
+   
+   public void setReference(Node nodeRef){
+       prevNode = nodeRef;
+   }
 }

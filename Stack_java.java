@@ -19,9 +19,8 @@ public class Stack_java {
     public static void main(String[] args) {
         
         boolean runProgram = true;
+        Node top = null;
         
-        Node myNode = new Node();
-
         while(runProgram){
             System.out.print("What do you want to do?\n 1: Push to stack\n 2: Pop from stack\n 3: Print all elements on the stack\n 4: Exit\n");
             Scanner input = new Scanner(System.in);
@@ -29,11 +28,14 @@ public class Stack_java {
             
             switch (n){
                 
-                case 1 :  Node topNode;
-                    topNode = new Node();
+                case 1 : Node addNode;
+                    addNode = new Node(top);
+                    top = addNode;
+                    
                     System.out.println("Enter value: ");
                     char userChar = input.next().charAt(0);
-                    topNode.setValue(userChar);
+                    addNode.setValue(userChar);
+                    
                     break;
                 case 2 : runProgram=false;
                     break;
