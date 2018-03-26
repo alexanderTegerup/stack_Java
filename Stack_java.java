@@ -29,17 +29,31 @@ public class Stack_java {
             switch (n){
                 
                 case 1 : Node addNode;
+                
                     addNode = new Node(top);
-                    
                     System.out.println("Enter value: ");
                     char userChar = input.next().charAt(0);
                     addNode.setValue(userChar);
-                    
                     top = addNode;
                     break;
-                case 2 : top = top.getReference();
+                    
+                case 2 : if(top != null){
+                    top = top.getReference();
+                }else{
+                    System.out.println("The stack is empty.");
+                }
                     break;
-                case 3 : runProgram = false;
+                    
+                case 3 : if(top == null){
+                    System.out.println("The stack is empty.");
+                }else{
+                    while(top.getReference()!=null){
+                    System.out.printf("Top value: %c\n", top.getValue());
+                    top = top.getReference();
+                    }
+                    System.out.printf("Top value: %c\n", top.getValue());
+                    top = top.getReference();
+                }
                     break;
                 case 4 : runProgram = false;
                     break;
