@@ -16,7 +16,9 @@ public class LinkedListStack {
     /**
      * @param args the command line arguments
      */
-     public static void main(String[] args) {
+    
+    /*
+     public static void mainTEST(String[] args) {
         
         boolean runProgram = true;
         Node top = null;
@@ -45,7 +47,7 @@ public class LinkedListStack {
             }    
         }
         
-    }
+    }*/
     
 }
     
