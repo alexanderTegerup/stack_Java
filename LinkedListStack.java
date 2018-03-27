@@ -16,11 +16,11 @@ public class LinkedListStack {
     /**
      * @param args the command line arguments
      */
+    
      public static void main(String[] args) {
         
         boolean runProgram = true;
         Node top = null;
-        
         Menu method = new Menu();
         
         while(runProgram){

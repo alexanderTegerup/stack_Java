@@ -35,11 +35,10 @@ public class Menu {
         if(top == null){
             System.out.println("The stack is empty.");
         }else{
-            while(top.getReference()!=null){
+            while(top!=null){
                 System.out.printf("Top value: %c\n", top.getValue());
-                top = top.getReference();
+                top = pop(top);
             }
-            System.out.printf("Top value: %c\n", top.getValue());
         }
     }
 }
