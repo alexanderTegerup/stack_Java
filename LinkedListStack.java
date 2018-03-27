@@ -41,6 +41,8 @@ public class LinkedListStack {
                     
                 case 4 : runProgram = false;
                     break;
+                    
+                default : System.out.println("You have to enter an integer between 1-4.\n");
                        
             }    
         }
