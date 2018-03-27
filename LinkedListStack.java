@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stack_java;
+package linkedliststack;
 
 import java.util.Scanner;
 
@@ -11,20 +11,17 @@ import java.util.Scanner;
  *
  * @author ATESXB
  */
-public class Stack_java {
+public class LinkedListStack {
 
     /**
      * @param args the command line arguments
      */
-    
-   
-    
-    public static void main(String[] args) {
+     public static void main(String[] args) {
         
         boolean runProgram = true;
         Node top = null;
         
-        MethodsForMain method = new MethodsForMain();
+        Menu method = new Menu();
         
         while(runProgram){
             System.out.print("What do you want to do?\n 1: Push to stack\n 2: Pop from stack\n 3: Print all elements on the stack\n 4: Exit\n");
@@ -51,3 +48,5 @@ public class Stack_java {
     }
     
 }
+    
+

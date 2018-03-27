@@ -3,23 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package stack_java;
+package linkedliststack;
+
 import java.util.Scanner;
 /**
  *
  * @author ATESXB
  */
-public class MethodsForMain {
+public class Menu {
     
     Scanner input = new Scanner(System.in);
-    public Node push(Node top){
+    public Node push(Node top){//, char testValue){
         Node addNode;
         addNode = new Node(top);
         System.out.println("Enter value: ");
         char userChar = input.next().charAt(0);
         addNode.setValue(userChar);
         return addNode;
-        //top = addNode;
     }
     
     public Node pop(Node top){
