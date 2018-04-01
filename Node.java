@@ -30,4 +30,8 @@ public class Node {
    public Node getReference(){
        return prevNode;
    }
+   
+   public void setReference(Node nodeRef){
+       prevNode = nodeRef;
+   }
 }
