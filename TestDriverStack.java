@@ -37,43 +37,30 @@ public class TestDriverStack {
     public static void testPush(Node top){ // Make it possible to take an argument of arbitrary data type
         
         Menu testObj = new Menu();
-        // *** Push to an empty stack ***
-        // Arrange
-        top = makeStackEmpty();
-        Random r = new Random();
-        char testValue = (char)(r.nextInt(26) + 'a'); // Random character from a-w
+        char testValue;
         
-        // Act
-        top = testObj.push(top, testValue);
-        
-        //Assert
-        if(top.getValue() == testValue){
-            System.out.println("TD: Push to an empty stack: succeed!");
-        }else{
-            System.out.println("TD: Push to an empty stack: failed!");
-        }
-        
-        // *** Push to a stack with three elements already ***
-        // Arrange
-        top = makeStackEmpty();
-        int numberElm = 3;
-        for(int i=1; i<numberElm; i++){
-            testValue = (char)(i + 'a');
+        int [] numberElmList = {0,1,2,3}; 
+        for (int numberElm : numberElmList){
             
-            top = testObj.push(top, testValue);
-        }
-        
-        // Act 
-        testValue = (char)(numberElm + 'a'); // Garanties that the top element 
+            // Arrange
+            top = makeStackEmpty();
+            for(int i=1; i<numberElm; i++){
+                testValue = (char)(i + 'a');
+                top = testObj.push(top, testValue);
+            }
+            
+            // Act 
+            testValue = (char)(numberElm + 'a'); // Garanties that the top element 
                                              // is not equal to any of the other
                                              // elements on the stack
-        top = testObj.push(top, testValue);
-        
-        // Assert
-        if(top.getValue() == testValue){
-            System.out.println("TD: Push to a stack with three elements already: succeed!");
-        }else{
-            System.out.println("TD: Push to a stack with three elements already: failed!");
+            top = testObj.push(top, testValue);
+            
+            // Assert
+            if(top.getValue() == testValue){
+                System.out.printf("TD: Push to a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+            }else{
+                System.out.printf("TD: Push to a stack with %d element%c: failed!\n",numberElm, numberElm==1 ? ' ' : 's');
+            }
         }
         
         // *** Dont't add to a full stack *** 
@@ -84,30 +71,10 @@ public class TestDriverStack {
         
         Menu menuTesting = new Menu();
         char testValue;
-        
-        // *** Pop an element from a stack with one element ***
-        // Arrange
-        top = makeStackEmpty();
-        Node tmpNode = new Node(top);
-        Random r = new Random();
-        testValue = (char)(r.nextInt(26) + 'a');
-        tmpNode.setValue(testValue);
-        top = tmpNode;
-        // Act
-        top = menuTesting.pop(top);
-        
-        // Assert
-        if(isEmpty(top)){
-            System.out.println("TD: Pop an element from a stack with one element: succeed!");
-        }else{
-            System.out.println("TD: Pop an element from a stack with one element: failed!");
-        }
-        
-        
-        
-        // *** Pop an element from a stack with an arbitrary number of elemnts on it ***
-        int [] numberElmList = {2,4}; // List with the number of elements on the stack 
+               
+        int [] numberElmList = {0,1,2,3,7}; // List with the number of elements on the stack 
         for (int numberElm : numberElmList){
+            
             // Arrange
             top = makeStackEmpty();
             for(int i=1; i<=numberElm; i++){
@@ -120,11 +87,21 @@ public class TestDriverStack {
             top = menuTesting.pop(top);
         
             // Assert
-            if(top.getValue() == (char)( (numberElm-1) + 'a')){ 
-                System.out.printf("TD: Pop an element from a stack with %d elements: succeed!\n",numberElm);
-            }else{
-                System.out.printf("TD: Pop an element from a stack with %d elements: falied!\n",numberElm);
+            if(numberElm>1){
+                if(top.getValue() == (char)( (numberElm-1) + 'a')){ 
+                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm,numberElm==1 ? ' ' : 's');
+                }else{
+                    System.out.printf("TD: Pop an element from a stack with %d element%c: falied!\n",numberElm, numberElm==1 ? ' ' : 's');
+                }
             }
+            
+            if(numberElm<=1){
+                if(isEmpty(top)){
+                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+                }else{
+                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+                }
+            }   
         }
         
     }
