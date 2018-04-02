@@ -8,7 +8,7 @@ package testdriverstack;
 import java.util.Random;
 import linkedliststack.Menu;
 import linkedliststack.Node;
-
+import java.util.ArrayList;
 /**
  *
  * @author ATESXB
@@ -21,8 +21,8 @@ public class TestDriverStack {
     public static void main(String[] args) {
         Node top = new Node(null);
         top.setValue('a'); 
-        testPush(top);
         
+        testPush(top);
         testPop(top);
     }
     
@@ -83,69 +83,49 @@ public class TestDriverStack {
     public static void testPop(Node top){
         
         Menu menuTesting = new Menu();
+        char testValue;
         
         // *** Pop an element from a stack with one element ***
         // Arrange
         top = makeStackEmpty();
-        Node testNode = new Node(top);
-        testNode.setValue('1');
-        
+        Node tmpNode = new Node(top);
+        Random r = new Random();
+        testValue = (char)(r.nextInt(26) + 'a');
+        tmpNode.setValue(testValue);
+        top = tmpNode;
         // Act
-        Node returnedNode = menuTesting.pop(top);
+        top = menuTesting.pop(top);
         
         // Assert
-        if(isEmpty(returnedNode)){
+        if(isEmpty(top)){
             System.out.println("TD: Pop an element from a stack with one element: succeed!");
         }else{
             System.out.println("TD: Pop an element from a stack with one element: failed!");
         }
         
-        // *** Pop an element from a stack with two elements ***
-        // Arrange
-        top = makeStackEmpty();
         
-        int numberElm = 2;
-        char testValue;
-        for(int i=1; i<=numberElm; i++){
-            testValue = (char)(i + 'a');
-            testNode = new Node(top);
-            testNode.setValue(testValue);
-            top = testNode;
+        
+        // *** Pop an element from a stack with an arbitrary number of elemnts on it ***
+        int [] numberElmList = {2,4}; // List with the number of elements on the stack 
+        for (int numberElm : numberElmList){
+            // Arrange
+            top = makeStackEmpty();
+            for(int i=1; i<=numberElm; i++){
+                testValue = (char)(i + 'a');
+                top = new Node(top);
+                top.setValue(testValue);
+            }
+            
+            // Act
+            top = menuTesting.pop(top);
+        
+            // Assert
+            if(top.getValue() == (char)( (numberElm-1) + 'a')){ 
+                System.out.printf("TD: Pop an element from a stack with %d elements: succeed!\n",numberElm);
+            }else{
+                System.out.printf("TD: Pop an element from a stack with %d elements: falied!\n",numberElm);
+            }
         }
-        
-        // Act
-        top = menuTesting.pop(top);
-        
-        // Assert
-        if(top.getValue() == (char)( (numberElm-1) + 'a')){ // Simplify? 
-            System.out.println("TD: Pop an element from a stack with two elements: succeed!");
-        }else{
-            System.out.println("TD: Pop an element from a stack with two elements: failed!");
-        }
-        
-        
-        
-        // *** Pop an element from a stack with four elements ***
-        //Arrange 
-        top = makeStackEmpty();
-        numberElm = 4;
-        for(int i=1; i<=numberElm; i++){
-            testValue = (char)(i + 'a');
-            testNode = new Node(top);
-            testNode.setValue(testValue);
-            top = testNode;
-        }
-        
-        // Act
-        top = menuTesting.pop(top);
-        
-        // Assert
-        if(top.getValue() == (char)( (numberElm-1) + 'a')){ // Simplify? 
-            System.out.println("TD: Pop an element from a stack with four elements: succeed!");
-        }else{
-            System.out.println("TD: Pop an element from a stack with four elements: failed!");
-        }
-        // Remove code repitition? 
         
     }
 }
