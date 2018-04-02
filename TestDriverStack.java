@@ -5,10 +5,10 @@
  */
 package testdriverstack;
 
-import java.util.Random;
 import linkedliststack.Menu;
 import linkedliststack.Node;
-import java.util.ArrayList;
+
+
 /**
  *
  * @author ATESXB
@@ -89,19 +89,27 @@ public class TestDriverStack {
             // Assert
             if(numberElm>1){
                 if(top.getValue() == (char)( (numberElm-1) + 'a')){ 
-                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm,numberElm==1 ? ' ' : 's');
+                    System.out.printf("TD: Pop an element from a stack with %d elements: succeed!\n",numberElm);
                 }else{
-                    System.out.printf("TD: Pop an element from a stack with %d element%c: falied!\n",numberElm, numberElm==1 ? ' ' : 's');
+                    System.out.printf("TD: Pop an element from a stack with %d elements: falied!\n",numberElm);
                 }
             }
             
-            if(numberElm<=1){
+            if(numberElm==1){
                 if(isEmpty(top)){
-                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+                    System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
                 }else{
-                    System.out.printf("TD: Pop an element from a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+                    System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
                 }
-            }   
+            }
+            
+            if(numberElm==0){
+                if(isEmpty(top)){
+                    System.out.printf("TD: Don't pop from an empty stack: succeed!\n");
+                }else{
+                    System.out.printf("TD: Don't pop from an empty stack: failed!\n");
+                }
+            }
         }
         
     }

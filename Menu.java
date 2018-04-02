@@ -14,13 +14,10 @@ public class Menu {
     
     Scanner input = new Scanner(System.in);
     
-    public Node push(Node top,char testValue){
-        Node addNode;
-        addNode = new Node(top);
-        System.out.println("Enter value: ");
-        char userChar = testValue; //input.next().charAt(0);
-        addNode.setValue(userChar);
-        return addNode;
+    public Node push(Node top, char userChar){
+        top = new Node(top);
+        top.setValue(userChar);
+        return top;
     }
     
     public Node pop(Node top){
