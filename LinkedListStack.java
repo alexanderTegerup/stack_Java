@@ -17,8 +17,8 @@ public class LinkedListStack {
      * @param args the command line arguments
      */
     
-    /*
-     public static void mainTEST(String[] args) {
+    
+     public static void main(String[] args) {
         
         boolean runProgram = true;
         Node top = null;
@@ -32,7 +32,9 @@ public class LinkedListStack {
             
             switch (n){
                 
-                case 1 : top = method.push(top);
+                case 1 : System.out.println("Enter value: ");
+                    char userChar = input.next().charAt(0);
+                    top = method.push(top,userChar);
                     break;
                     
                 case 2 : top = method.pop(top);
@@ -47,7 +49,7 @@ public class LinkedListStack {
             }    
         }
         
-    }*/
+    }
     
 }
     
