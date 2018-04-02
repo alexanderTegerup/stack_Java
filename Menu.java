@@ -13,13 +13,13 @@ import java.util.Scanner;
 public class Menu {
     
     Scanner input = new Scanner(System.in);
-    public Node push(Node top){//, char testValue){
-        Node addNode;
-        addNode = new Node(top);
+    
+    public Node push(Node top){//,char testValue){
+        top = new Node(top);
         System.out.println("Enter value: ");
         char userChar = input.next().charAt(0);
-        addNode.setValue(userChar);
-        return addNode;
+        top.setValue(userChar);
+        return top;
     }
     
     public Node pop(Node top){
@@ -35,10 +35,11 @@ public class Menu {
         if(top == null){
             System.out.println("The stack is empty.");
         }else{
-            while(top!=null){
+            while(top.getReference()!=null){
                 System.out.printf("Top value: %c\n", top.getValue());
-                top = pop(top);
+                top = top.getReference();
             }
+            System.out.printf("Top value: %c\n", top.getValue());
         }
     }
 }
