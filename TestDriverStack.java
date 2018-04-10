@@ -19,8 +19,7 @@ public class TestDriverStack {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Node top = new Node(null);
-        top.setValue('a'); 
+        Node top = new Node(); 
         
         testPush(top);
         testPop(top);
@@ -34,7 +33,7 @@ public class TestDriverStack {
         return (top == null);
     }
     
-    public static void testPush(Node top){ // Make it possible to take an argument of arbitrary data type
+    public static void testPush(Node top){ 
         
         Menu testObj = new Menu();
         char testValue;
@@ -43,17 +42,19 @@ public class TestDriverStack {
         for (int numberElm : numberElmList){
             
             // Arrange
-            top = makeStackEmpty();
-            for(int i=1; i<numberElm; i++){
+            top = makeStackEmpty();  
+            for(int i=0; i<numberElm; i++){
+                top = new Node(top);
                 testValue = (char)(i + 'a');
-                top = testObj.push(top, testValue);
+                top.setValue(testValue);
             }
-            
+
             // Act 
             testValue = (char)(numberElm + 'a'); // Garanties that the top element 
                                              // is not equal to any of the other
                                              // elements on the stack
             top = testObj.push(top, testValue);
+            
             
             // Assert
             if(top.getValue() == testValue){
