@@ -21,12 +21,11 @@ public class LinkedListStack {
      public static void main(String[] args) {
         
         boolean runProgram = true;
-        Node top = null;
-        
-        Menu method = new Menu();
+        char popValue;
+        Stack myStack = new Stack();
         
         while(runProgram){
-            System.out.print("What do you want to do?\n 1: Push to stack\n 2: Pop from stack\n 3: Print all elements on the stack\n 4: Exit\n");
+            System.out.print("What do you want to do?\n 1: Push to stack\n 2: Pop from stack\n 3: Peek\n 4: Exit\n");
             Scanner input = new Scanner(System.in);
             int n = input.nextInt();
             
@@ -34,13 +33,13 @@ public class LinkedListStack {
                 
                 case 1 : System.out.println("Enter value: ");
                     char userChar = input.next().charAt(0);
-                    top = method.push(top,userChar);
+                    myStack.push(userChar);
                     break;
                     
-                case 2 : top = method.pop(top);
+                case 2 : popValue = myStack.pop();
                     break;
                     
-                case 3 : method.printAll(top);
+                case 3 : myStack.peek();
                     break;
                     
                 case 4 : runProgram = false;
