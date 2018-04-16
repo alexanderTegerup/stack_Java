@@ -5,9 +5,7 @@
  */
 package testdriverstack;
 
-import linkedliststack.Menu;
-import linkedliststack.Node;
-
+import linkedliststack.Stack;
 
 /**
  *
@@ -19,77 +17,62 @@ public class TestDriverStack {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Node top = new Node(); 
-        
-        testPush(top);
-        testPop(top);
+        testPush();
+        testPop();
     }
     
-    public static Node makeStackEmpty(){ // Is it enough to return null here, or 
-        return null;                    // do I need to adjust the reference 
-    }                                   // within the node as well? 
     
-    public static boolean isEmpty(Node top){
-        return (top == null);
-    }
-    
-    public static void testPush(Node top){ 
+    public static void testPush(){ 
         
-        Menu testObj = new Menu();
-        char testValue;
+        Stack testStack = new Stack();
+        char inputChar;
         
         int [] numberElmList = {0,1,2,3}; 
         for (int numberElm : numberElmList){
             
             // Arrange
-            top = makeStackEmpty();  
             for(int i=0; i<numberElm; i++){
-                top = new Node(top);
-                testValue = (char)(i + 'a');
-                top.setValue(testValue);
+                
+                inputChar = (char)(i + 'a');
+                testStack.push(inputChar);
             }
 
             // Act 
-            testValue = (char)(numberElm + 'a'); // Garanties that the top element 
-                                             // is not equal to any of the other
-                                             // elements on the stack
-            top = testObj.push(top, testValue);
-            
+            inputChar = (char)(numberElm + 'a'); // Unique top element                          
+            testStack.push(inputChar);
             
             // Assert
-            if(top.getValue() == testValue){
+            if(testStack.peek() == inputChar){
                 System.out.printf("TD: Push to a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
             }else{
                 System.out.printf("TD: Push to a stack with %d element%c: failed!\n",numberElm, numberElm==1 ? ' ' : 's');
             }
         }
-        
-        // *** Dont't add to a full stack *** 
     
     }
     
-    public static void testPop(Node top){
+    public static void testPop(){
         
-        Menu menuTesting = new Menu();
-        char testValue;
+        Stack testStack = new Stack();
+        char inputChar;
+        char popValue;
                
         int [] numberElmList = {0,1,2,3,7}; // List with the number of elements on the stack 
         for (int numberElm : numberElmList){
             
             // Arrange
-            top = makeStackEmpty();
             for(int i=1; i<=numberElm; i++){
-                testValue = (char)(i + 'a');
-                top = new Node(top);
-                top.setValue(testValue);
+                
+                inputChar = (char)(i + 'a');
+                testStack.push(inputChar);
             }
             
             // Act
-            top = menuTesting.pop(top);
+            popValue = testStack.pop();
         
             // Assert
             if(numberElm>1){
-                if(top.getValue() == (char)( (numberElm-1) + 'a')){ 
+                if(popValue == (char)( (numberElm) + 'a')){ 
                     System.out.printf("TD: Pop an element from a stack with %d elements: succeed!\n",numberElm);
                 }else{
                     System.out.printf("TD: Pop an element from a stack with %d elements: falied!\n",numberElm);
@@ -97,7 +80,7 @@ public class TestDriverStack {
             }
             
             if(numberElm==1){
-                if(isEmpty(top)){
+                if(testStack.peek() == ' '){
                     System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
                 }else{
                     System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
@@ -105,7 +88,7 @@ public class TestDriverStack {
             }
             
             if(numberElm==0){
-                if(isEmpty(top)){
+                if(testStack.peek() == ' '){
                     System.out.printf("TD: Don't pop from an empty stack: succeed!\n");
                 }else{
                     System.out.printf("TD: Don't pop from an empty stack: failed!\n");

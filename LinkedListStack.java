@@ -40,7 +40,9 @@ public class LinkedListStack {
                     System.out.printf("Poped value: %c\n", popValue);
                     break;
                     
-                case 3 : myStack.peek();
+                case 3 : char peekValue;
+                    peekValue = myStack.peek();
+                    System.out.printf("Top value: %c\n", peekValue);
                     break;
                     
                 case 4 : runProgram = false;

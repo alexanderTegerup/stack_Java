@@ -12,7 +12,7 @@ package linkedliststack;
 public class Stack {
     
     private Node top; 
-    char popValue;
+    private char popValue;
     
     public void push(char userChar){
         Node tmpRef;
@@ -33,11 +33,12 @@ public class Stack {
         }
     }
     
-    public void peek(){
+    public char peek(){
         if(top == null){
             System.out.println("The stack is empty.");
+            return ' ';
         }else{
-            System.out.printf("Top value: %c\n", top.nodeValue);
+            return top.nodeValue;
         }
     }
     
