@@ -12,30 +12,7 @@ package linkedliststack;
  */
 public class Node {
     
-   private char nodeValue; 
-   private Node prevNode;
+   public char nodeValue; 
+   public Node prevNode;
    
-   public Node(){ // Default constructor
-       prevNode = null;
-       nodeValue = ' ';
-   }
-   public Node(Node nodeRef){ // Constructor
-       prevNode = nodeRef;
-       nodeValue = ' ';
-   }
-   
-   public void setValue(char value){
-       nodeValue = value;
-   }
-   public char getValue(){
-       return nodeValue;
-   }
-   
-   public Node getReference(){
-       return prevNode;
-   }
-   
-   public void setReference(Node nodeRef){
-       prevNode = nodeRef;
-   }
 }

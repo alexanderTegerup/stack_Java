@@ -15,14 +15,17 @@ public class Stack {
     char popValue;
     
     public void push(char userChar){
-        top = new Node(top);
-        top.setValue(userChar);
+        Node tmpRef;
+        tmpRef = top;
+        top = new Node();
+        top.nodeValue = userChar;
+        top.prevNode = tmpRef;
     }
     
     public char pop(){
         if(top != null){
-            popValue = top.getValue();
-            top = top.getReference();
+            popValue = top.nodeValue;
+            top = top.prevNode;
             return popValue;
         }else{
             System.out.println("The stack is empty.");
@@ -34,7 +37,7 @@ public class Stack {
         if(top == null){
             System.out.println("The stack is empty.");
         }else{
-            System.out.printf("Top value: %c\n", top.getValue());
+            System.out.printf("Top value: %c\n", top.nodeValue);
         }
     }
     

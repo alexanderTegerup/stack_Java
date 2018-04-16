@@ -21,7 +21,6 @@ public class LinkedListStack {
      public static void main(String[] args) {
         
         boolean runProgram = true;
-        char popValue;
         Stack myStack = new Stack();
         
         while(runProgram){
@@ -36,7 +35,9 @@ public class LinkedListStack {
                     myStack.push(userChar);
                     break;
                     
-                case 2 : popValue = myStack.pop();
+                case 2 : char popValue;
+                    popValue = myStack.pop();
+                    System.out.printf("Poped value: %c\n", popValue);
                     break;
                     
                 case 3 : myStack.peek();
