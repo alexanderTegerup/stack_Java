@@ -5,8 +5,8 @@
  */
 package testdriverstack;
 
-import linkedliststack.Stack;
-
+//import linkedliststack.Stack; //Alex stack
+import app.Stack; // Aziz stack 
 /**
  *
  * @author ATESXB
@@ -20,6 +20,26 @@ public class TestDriverStack {
         testPush();
         testPop();
     }
+    
+    private static void assert_push(int elmPush, int elmPop, char testVal, Stack testStack) {
+        
+        int diff = elmPush - elmPop;
+        if(diff > 0) {
+            
+            if(testVal == (char)( diff+1 + 'a')){ 
+                    System.out.printf("TD: Add %d elements and pop %d elements: succeed!\n",elmPush, elmPop);
+                }else{
+                    System.out.printf("TD: Add %d elements and pop %d elements: falied!\n",elmPush, elmPop);
+                }
+        }else{
+            if(testStack.peek() == ' '){
+                    System.out.printf("TD: Add %d elements and pop %d elements: succeed!\n",elmPush, elmPop);
+            }else{
+                    System.out.printf("TD: Add %d elements and pop %d elements: falied!\n",elmPush, elmPop);
+            }
+        }
+    }
+    
     
     
     public static void testPush(){ 
@@ -57,43 +77,30 @@ public class TestDriverStack {
         char inputChar;
         char popValue;
                
-        int [] numberElmList = {0,1,2,3,7}; // List with the number of elements on the stack 
-        for (int numberElm : numberElmList){
+        int [] numberElmToPush = {0,1,2,3,7}; // Array with the number of elements on the stack 
+        int [] numberElmToPop = {1,1,1,4,1}; // Array with number of elements to pop
+        int numberTestCases = numberElmToPush.length; 
+        //for (int numberElm : numberElmList){
+        for(int testCase=0; testCase<numberTestCases; testCase++){
             
             // Arrange
-            for(int i=1; i<=numberElm; i++){
+            for(int i=1; i<=numberElmToPush[testCase]; i++){
                 
                 inputChar = (char)(i + 'a');
                 testStack.push(inputChar);
             }
             
             // Act
+            //System.out.printf("numberElmToPop = %d\n",numberElmToPop[3] );
+            for(int i=0; i<numberElmToPop[testCase]-1; i++){
+
+                testStack.pop();
+            }
             popValue = testStack.pop();
         
             // Assert
-            if(numberElm>1){
-                if(popValue == (char)( (numberElm) + 'a')){ 
-                    System.out.printf("TD: Pop an element from a stack with %d elements: succeed!\n",numberElm);
-                }else{
-                    System.out.printf("TD: Pop an element from a stack with %d elements: falied!\n",numberElm);
-                }
-            }
+            assert_push(numberElmToPush[testCase], numberElmToPop[testCase], popValue, testStack);
             
-            if(numberElm==1){
-                if(testStack.peek() == ' '){
-                    System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
-                }else{
-                    System.out.printf("TD: Pop an element from a stack with %d element: succeed!\n",numberElm);
-                }
-            }
-            
-            if(numberElm==0){
-                if(testStack.peek() == ' '){
-                    System.out.printf("TD: Don't pop from an empty stack: succeed!\n");
-                }else{
-                    System.out.printf("TD: Don't pop from an empty stack: failed!\n");
-                }
-            }
         }
         
     }
