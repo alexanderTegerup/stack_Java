@@ -5,8 +5,8 @@
  */
 package testdriverstack;
 
-//import linkedliststack.Stack; //Alex stack
-import app.Stack; // Aziz stack 
+import linkedliststack.Stack; //Alex stack
+//import app.Stack; // Aziz stack 
 /**
  *
  * @author ATESXB
@@ -21,7 +21,7 @@ public class TestDriverStack {
         testPop();
     }
     
-    private static void assert_push(int elmPush, int elmPop, char testVal, Stack testStack) {
+    private static void assert_pop(int elmPush, int elmPop, char testVal, Stack testStack) {
         
         int diff = elmPush - elmPop;
         if(diff > 0) {
@@ -99,7 +99,7 @@ public class TestDriverStack {
             popValue = testStack.pop();
         
             // Assert
-            assert_push(numberElmToPush[testCase], numberElmToPop[testCase], popValue, testStack);
+            assert_pop(numberElmToPush[testCase], numberElmToPop[testCase], popValue, testStack);
             
         }
         
