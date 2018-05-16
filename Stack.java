@@ -5,6 +5,7 @@
  */
 package linkedliststack;
 
+
 /**
  *
  * @author ATESXB
@@ -12,32 +13,37 @@ package linkedliststack;
 public class Stack {
     
     private Node top; 
-    private char popValue;
     
     public void push(char userChar){
-        Node tmpRef;
-        tmpRef = top;
-        top = new Node();
-        top.nodeValue = userChar;
-        top.prevNode = tmpRef;
+        
+        Node tempRef =  new Node();
+        tempRef.nodeValue = userChar;
+        tempRef.prevNode = top;
+        top = tempRef;
     }
     
     public char pop(){
+        
         if(top != null){
+            
+            char popValue;
             popValue = top.nodeValue;
             top = top.prevNode;
+            
             return popValue;
+            
         }else{
-            System.out.println("The stack is empty.");
             return ' ';
         }
     }
     
     public char peek(){
+        
         if(top == null){
-            System.out.println("The stack is empty.");
+            
             return ' ';
         }else{
+            
             return top.nodeValue;
         }
     }

@@ -37,12 +37,20 @@ public class LinkedListStack {
                     
                 case 2 : char popValue;
                     popValue = myStack.pop();
-                    System.out.printf("Poped value: %c\n", popValue);
+                    if(popValue == ' '){
+                        System.out.println("The stack is empty.");
+                    }else{
+                        System.out.printf("Poped value: %c\n", popValue);
+                    }
                     break;
                     
                 case 3 : char peekValue;
                     peekValue = myStack.peek();
-                    System.out.printf("Top value: %c\n", peekValue);
+                    if(peekValue == ' '){
+                        System.out.println("The stack is empty.");
+                    }else{
+                        System.out.printf("Poped value: %c\n", peekValue);
+                    }
                     break;
                     
                 case 4 : runProgram = false;
