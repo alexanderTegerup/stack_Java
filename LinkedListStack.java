@@ -49,7 +49,7 @@ public class LinkedListStack {
                     if(peekValue == ' '){
                         System.out.println("The stack is empty.");
                     }else{
-                        System.out.printf("Poped value: %c\n", peekValue);
+                        System.out.printf("Top value: %c\n", peekValue);
                     }
                     break;
                     

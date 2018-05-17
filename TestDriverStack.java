@@ -5,8 +5,8 @@
  */
 package testdriverstack;
 
-import linkedliststack.Stack; //Alex stack
-//import app.Stack; // Aziz stack 
+//import linkedliststack.Stack; //Alex stack
+import app.Stack; // Aziz stack 
 /**
  *
  * @author ATESXB
@@ -19,6 +19,7 @@ public class TestDriverStack {
     public static void main(String[] args) {
         testPush();
         testPop();
+        testPeek();
     }
     
     private static void assert_pop(int elmPush, int elmPop, char testVal, Stack testStack) {
@@ -40,7 +41,35 @@ public class TestDriverStack {
         }
     }
     
-    
+    public static void testPeek(){
+        
+        Stack testStack = new Stack();
+        char inputChar, peekReturnValue;
+        
+        int [] numberElmList = {0,1,2,3}; 
+        for (int numberElm : numberElmList){
+            
+            // Arrange
+            for(int i=0; i<=numberElm; i++){
+                
+                inputChar = (char)(i + 'a');
+                testStack.push(inputChar);
+            }
+            
+            // Act
+            peekReturnValue = testStack.peek();
+            
+            // Assert
+            
+            if(testStack.pop() == peekReturnValue) {
+                System.out.printf("TD: Peek at a stack with %d element%c: succeed!\n",numberElm, numberElm==1 ? ' ' : 's');
+            }else{
+                System.out.printf("TD: Peek at a stack with %d element%c: failed!\n",numberElm, numberElm==1 ? ' ' : 's');
+                
+            }
+            
+        }
+    }
     
     public static void testPush(){ 
         
